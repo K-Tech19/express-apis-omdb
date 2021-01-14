@@ -1,10 +1,10 @@
 <form action="/faves" method="POST">
-<input type="submit" value="add to favorites">
-<input type="hidden" name="title" value="<%= movie.Title %>">
-<input type="hidden" name="imdbid" value="<%= movie.imdbID %>">
-
+    <input type="submit" value="add to favorites">
+    <input type="hidden" name="title" value="<%= movie.Title %>">
+    <input type="hidden" name="imdbid" value="<%= movie.imdbID %>">
 </form>
 
+<img src="<%= movie.Poster %>" alt="">
 
 <h2>
     <%= movie.Title %>
@@ -12,12 +12,35 @@
 
 <ul>
     <li>
-        <%= movie.Genre %>
         <%= movie.Year %>
-        <%= movie.Actors %>
+    </li>
+    <li>
+        <%= movie.Rated %>
+    </li>
+    <li>
+        <ul>
+            <% movie.Actors.split(',').forEach(actor =>{ %>
+                <li> <%= actor%> 
+
+                </li>
+        <%    }) %>
+        </ul>
+    </li>
+    <li>
+        <%= movie.Genre %>
+    </li>
+    <li>
+        <%= movie.Genre %>
+    </li><li>
+        <%= movie.Genre %>
+    </li><li>
+        <%= movie.Genre %>
+    </li><li>
+        <%= movie.Genre %>
     </li>
 </ul>
 
+<br>
 
 
 

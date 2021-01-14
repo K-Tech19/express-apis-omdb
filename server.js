@@ -38,16 +38,24 @@ app.get('/movies/:movieid', (req, res)=>{
   console.log(req.params.movieid)
   axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${req.params.movieid}`)
   .then(response => {
-    console.log(response)
+    console.log(response.data)
     res.render('detail.ejs', {movie:response.data})
   })
 })
 
+app.get('/faves', (req,res)=>{
+  db.faves.findAll().then(faves =>{
+    console.log(faves)
+    res.render('faves', {faves})
+  })
+})
+
+
 app.post('/faves', (req,res)=>{
   db.faves.create(req.body).then(createdFave =>{
-    res.redirect('/faves')
+    console.log(createdFave)
+    redirect('/faves')
   }) 
-
 })
 
 // The app.listen function returns a server handle
